@@ -1,0 +1,31 @@
+# permissions for end users to edit events.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: event-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: test-kubebuilder
+    app.kubernetes.io/part-of: test-kubebuilder
+    app.kubernetes.io/managed-by: kustomize
+  name: event-editor-role
+rules:
+- apiGroups:
+  - example.test.kubebuiler
+  resources:
+  - events
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - example.test.kubebuiler
+  resources:
+  - events/status
+  verbs:
+  - get
